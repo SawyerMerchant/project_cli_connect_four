@@ -5,8 +5,8 @@ require_relative "board"
 require_relative "render"
 
 class ConnectFour
-  def initialize
-    @board = Board.new
+  def initialize(board: Board.new)
+    @board = board
     @player1 = Player.new
     @player2 = Player.new
     @player1.piece = "X"
@@ -14,6 +14,7 @@ class ConnectFour
     play
   end
 
+  # don't test me
   def play
     Render.board(@board.rows)
     placement = nil

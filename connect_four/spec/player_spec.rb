@@ -4,6 +4,7 @@ describe Player do
   let(:player) {Player.new}
 
   describe '#piece' do
+
     it 'is initialized to nil' do
       expect(player.piece).to be_nil
     end
@@ -13,24 +14,28 @@ describe Player do
       player.piece = value
       expect(player.piece).to eq("X")
     end
+
   end
 
   describe '#piece=' do
+
     it 'sets the player\'s piece' do
       value = "X"
       player.piece = value
       expect(player.piece).to eq("X")
     end
+
   end
 
   describe '#placement' do
-    it 'outputs prompt for player to enter piece coordinates' do
-      STDOUT.should_recieve(:puts).with(puts "Enter the column in which you want to place a piece")
+
+    it 'outputs prompt for player to enter piece coordinates and gets response' do
+      prompt = "Enter the column in which you want to place a piece"
+      expect(player).to receive(:puts).with(prompt)
+      allow(player).to receive(:gets).and_return("let me out")
+      player.placement
     end
 
-    it 'gets player\'s response to prompt'
-
-
-
   end
+
 end
