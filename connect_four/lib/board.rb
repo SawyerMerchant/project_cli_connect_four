@@ -1,3 +1,22 @@
+=begin
+public
+  :board
+  :add_piece
+  :winner?
+  :win
+  :check_diagonal
+  :four_in_a_row
+  :check_horizontal
+  :rows
+  :check_vertical
+  :negative_diagonal
+  :positive_diagonal
+  :scan_board
+  :full?
+private
+  nil
+=end
+
 require 'matrix'
 
 class Board
@@ -21,7 +40,7 @@ class Board
   end
 
   def win(coords)
-    # check_horizontal || check_vertical || 
+    # check_horizontal || check_vertical ||
     check_diagonal(coords)
   end
 
