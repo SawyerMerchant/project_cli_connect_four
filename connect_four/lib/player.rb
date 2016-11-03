@@ -1,3 +1,9 @@
+=begin
+piece
+piece=
+placement
+=end
+
 class Player
   attr_accessor :piece
   def placement
