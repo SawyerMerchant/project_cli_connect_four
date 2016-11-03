@@ -124,7 +124,7 @@ class Board
     end
 
     def win(coords)
-      # check_horizontal || check_vertical ||
+      check_horizontal || check_vertical ||
       check_diagonal(coords)
     end
 

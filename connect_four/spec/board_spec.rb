@@ -47,9 +47,20 @@ describe Board do
       board.add_piece(0, "X")
       2.times { board.add_piece(1, "X") }
       3.times { board.add_piece(2, "X") }
+      expect(board.winner?([2,2])).to be_falsy
     end
 
-    it 'returns true if there are 4 identical pieces connected'
+    it 'returns true if there are 4 identical pieces connected vertically' do
+      4.times { board.add_piece(2, "X") }
+      expect(board.winner?([2,3])).to be_truthy
+    end
+
+    it 'returns true if there are 4 identical pieces connected horizontally' do
+      4.times { |column_num| board.add_piece(column_num, "x")}
+      expect(board.winner?([5,5])).to be_truthy
+    end
+
+    it 'returns true if there are 4 identical pieces connected diagonaly'
 
   end
 
