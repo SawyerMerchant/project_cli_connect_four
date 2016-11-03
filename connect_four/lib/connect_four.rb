@@ -11,7 +11,7 @@ class ConnectFour
     @player2 = Player.new
     @player1.piece = "X"
     @player2.piece = "O"
-    play
+    # play
   end
 
   # don't test me
@@ -29,4 +29,4 @@ class ConnectFour
   end
 end
 
-ConnectFour.new
+# ConnectFour.new

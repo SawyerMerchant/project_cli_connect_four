@@ -20,8 +20,8 @@ require 'matrix'
 
 class Board
   attr_reader :board
-  def initialize
-    @board = Array.new(7) { [nil, nil, nil, nil, nil, nil] }
+  def initialize(args = {})
+    @board = args[:board] || blank_board
   end
 
   def add_piece(column, piece)
@@ -62,6 +62,10 @@ class Board
   end
 
   private
+
+    def blank_board
+      Array.new(7) { [nil, nil, nil, nil, nil, nil] }
+    end
 
     def check_diagonal(piece)
       diagonals = []
