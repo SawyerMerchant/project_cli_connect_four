@@ -60,21 +60,56 @@ describe Board do
       expect(board.winner?([5,5])).to be_truthy
     end
 
-    it 'returns true if there are 4 identical pieces connected diagonaly'
+    it 'returns true if there are 4 identical pieces connected on a positive diagonal' do
+      board.add_piece(0, "X")
+      2.times { board.add_piece(1, "X") }
+      3.times { board.add_piece(2, "X") }
+      board.add_piece(3, "O")
+      3.times { board.add_piece(3, "X") }
+      expect(board.winner?([4,4])).to be_truthy
+    end
+
+    it 'returns true if there are 4 identical pieces connected on a negative diagonal' do
+      board.add_piece(0, "O")
+      3.times { board.add_piece(0, "X") }
+      3.times { board.add_piece(1, "X") }
+      2.times { board.add_piece(2, "X") }
+      board.add_piece(3, "X")
+      expect(board.winner?([0,4])).to be_truthy
+    end
 
   end
 
   describe '#rows' do
 
-    it 'returns all the boards rows'
+    it 'returns all the boards rows' do
+      columns, rows = 7, 6
+      board.rows.each do |row|
+        expect(row.length).to eq(columns)
+      end
+      expect(board.rows.length).to eq(rows)
+      expect(board.rows).to_not eq(board.board)
+    end
 
   end
 
   describe '#full?' do
+    before(:each) do
+      columns, rows = 6, 6
+      columns.downto(1) do |column_number|
+        rows.times { board.add_piece(column_number, "X") }
+      end
+      rows.downto(2) { board.add_piece(0, "X") }
+    end
 
-    it 'returns false if the board is not full'
+    it 'returns false if the board is not full' do
+      expect(board.full?).to be_falsy
+    end
 
-    it 'returns true if the board is full'
+    it 'returns true if the board is full' do
+      board.add_piece(0, "X")
+      expect(board.full?).to be_truthy
+    end
 
   end
 
